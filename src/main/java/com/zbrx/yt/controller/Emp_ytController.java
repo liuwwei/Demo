@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zbrx.yt.model.Emp_yt;
 import com.zbrx.yt.service.EmpService;
-
+/* ：：*/
 @Controller
 @RequestMapping("/emp")
 public class Emp_ytController {
