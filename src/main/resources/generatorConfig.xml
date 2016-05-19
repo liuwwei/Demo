@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <!-- 数据库驱动包位置 -->
+	<classPathEntry location="D:\generator\sqljdbc4.jar"/>
+	<!-- <classPathEntry location="C:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar" />-->
+	<context targetRuntime="MyBatis3" id="DB2Tables">
+		<commentGenerator>
+			<property value="true" name="suppressAllComments"/>
+		</commentGenerator>
+		<!-- 数据库链接URL、用户名、密码 -->
+		<!--<jdbcConnection password="12345" userId="root" connectionURL="jdbc:mysql://localhost:3306/shop" driverClass="com.mysql.jdbc.Driver">-->
+		<!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" userId="msa" password="msa">
+		</jdbcConnection>-->
+		 <jdbcConnection 
+        	driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+        	connectionURL="jdbc:sqlserver://127.0.0.1;databaseName=yt"
+        	userId="sa" 
+        	password="123"
+        >
+        </jdbcConnection>
+		<javaTypeResolver>
+			<property value="false" name="forceBigDecimals"/>
+		</javaTypeResolver>
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetProject="emp-dept/src/main/java" targetPackage="com.zbrx.yt.model">
+			<property value="true" name="enableSubPackages"/>
+			<property value="true" name="trimStrings"/>
+		</javaModelGenerator>
+		<!-- 生成的映射文件包名和位置 -->
+		<sqlMapGenerator targetProject="emp-dept/src/main/resources" targetPackage="com.zbrx.yt.mapping">
+			<property value="true" name="enableSubPackages"/>
+		</sqlMapGenerator>
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator targetProject="emp-dept/src/main/java" targetPackage="com.zbrx.yt.dao" type="XMLMAPPER">
+			<property value="true" name="enableSubPackages"/>
+		</javaClientGenerator>
+		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
+		<table selectByExampleQueryId="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableCountByExample="false" domainObjectName="Emp_yt" tableName="emp_yt"/>
+		<table selectByExampleQueryId="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableCountByExample="false" domainObjectName="Dept_yt" tableName="dept_yt"/>
+		
+	</context>
+</generatorConfiguration>

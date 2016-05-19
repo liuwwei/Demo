@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zbrx.yt.dao.Dept_ytMapper" >
+  <resultMap id="BaseResultMap" type="com.zbrx.yt.model.Dept_yt" >
+    <result column="dep_id" property="depId" jdbcType="INTEGER" />
+    <result column="depno" property="depno" jdbcType="INTEGER" />
+    <result column="depname" property="depname" jdbcType="NVARCHAR" />
+    <result column="log" property="log" jdbcType="NVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zbrx.yt.model.Dept_yt" >
+    insert into dept_yt (dep_id, depno, depname, 
+      log)
+    values (#{depId,jdbcType=INTEGER}, #{depno,jdbcType=INTEGER}, #{depname,jdbcType=NVARCHAR}, 
+      #{log,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zbrx.yt.model.Dept_yt" >
+    insert into dept_yt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="depId != null" >
+        dep_id,
+      </if>
+      <if test="depno != null" >
+        depno,
+      </if>
+      <if test="depname != null" >
+        depname,
+      </if>
+      <if test="log != null" >
+        log,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="depId != null" >
+        #{depId,jdbcType=INTEGER},
+      </if>
+      <if test="depno != null" >
+        #{depno,jdbcType=INTEGER},
+      </if>
+      <if test="depname != null" >
+        #{depname,jdbcType=NVARCHAR},
+      </if>
+      <if test="log != null" >
+        #{log,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

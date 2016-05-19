@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zbrx.yt.dao.Emp_ytMapper" >
+  <resultMap id="BaseResultMap" type="com.zbrx.yt.model.Emp_yt" >
+    <result column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="empno" property="empno" jdbcType="INTEGER" />
+    <result column="ename" property="ename" jdbcType="NVARCHAR" />
+    <result column="depno" property="depno" jdbcType="NVARCHAR" />
+    <result column="depname" property="depname" jdbcType="NVARCHAR" />
+    <result column="job" property="job" jdbcType="NVARCHAR" />
+    <result column="sal" property="sal" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zbrx.yt.model.Emp_yt" >
+    insert into emp_yt (emp_id, empno, ename, 
+      depno, depname, job, 
+      sal)
+    values (#{empId,jdbcType=INTEGER}, #{empno,jdbcType=INTEGER}, #{ename,jdbcType=NVARCHAR}, 
+      #{depno,jdbcType=NVARCHAR}, #{depname,jdbcType=NVARCHAR}, #{job,jdbcType=NVARCHAR}, 
+      #{sal,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zbrx.yt.model.Emp_yt" >
+    insert into emp_yt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="empno != null" >
+        empno,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+      <if test="depno != null" >
+        depno,
+      </if>
+      <if test="depname != null" >
+        depname,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="sal != null" >
+        sal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="empno != null" >
+        #{empno,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=NVARCHAR},
+      </if>
+      <if test="depno != null" >
+        #{depno,jdbcType=NVARCHAR},
+      </if>
+      <if test="depname != null" >
+        #{depname,jdbcType=NVARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=NVARCHAR},
+      </if>
+      <if test="sal != null" >
+        #{sal,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="findAll" resultType="com.zbrx.yt.model.Emp_yt">
+    SELECT * FROM dbo.emp_yt ORDER BY empid
+  </select>
+
+  
+</mapper>
